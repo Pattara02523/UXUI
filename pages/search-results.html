@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ผลการค้นหา | BusOnlineTicket</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+Thai:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="brand" href="../index.html"><span class="brand-mark">BT</span><span>BusOnlineTicket</span></a>
+      <button class="menu-toggle" type="button" aria-label="เปิดเมนู" aria-controls="primary-menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+      <div class="nav-links" id="primary-menu">
+        <a class="nav-link" href="../index.html">หน้าแรก</a>
+        <a class="nav-link active" href="search-results.html">ค้นหาเที่ยวรถ</a>
+        <a class="nav-link" href="booking-history.html">ประวัติการจอง</a>
+        <a class="nav-link" href="support.html">ช่วยเหลือ</a>
+      </div>
+      <div class="nav-actions"><a class="btn btn-ghost" href="login.html">เข้าสู่ระบบ</a><a class="btn btn-primary" href="register.html">สมัครสมาชิก</a></div>
+    </nav>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-kicker"><i class="fa-solid fa-magnifying-glass"></i> Search Results</span>
+        <h1>กรุงเทพฯ ไป เชียงใหม่</h1>
+        <p class="muted">28 มิ.ย. 2026 | ผู้โดยสาร 1 คน | พบ 24 เที่ยวรถ</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container page-layout">
+        <aside class="card sidebar-panel">
+          <h2 class="heading">ตัวกรอง</h2>
+          <div class="filter-stack">
+            <div class="field"><label>เรียงตาม</label><select class="select"><option>เวลาออกเร็วสุด</option><option>ราคาต่ำสุด</option><option>รีวิวสูงสุด</option></select></div>
+            <div class="field"><label>บริษัท</label><select class="select"><option>ทุกบริษัท</option><option>นครชัยแอร์</option><option>สมบัติทัวร์</option></select></div>
+            <div class="field"><label>ประเภทรถ</label><select class="select"><option>ทุกประเภท</option><option>VIP 24</option><option>VIP 32</option></select></div>
+            <button class="btn btn-secondary" type="button">ใช้ตัวกรอง</button>
+          </div>
+        </aside>
+        <div class="stack">
+          <article class="card result-card">
+            <div>
+              <div class="company-line"><span class="logo-box">NA</span><div><strong>นครชัยแอร์</strong><p class="muted">VIP 32 | ชานชาลา A4 | รีวิว 4.8</p></div></div>
+              <div class="time-route"><strong>19:30<br><span class="helper-text">กรุงเทพฯ</span></strong><span class="track"></span><strong>05:45<br><span class="helper-text">เชียงใหม่</span></strong></div>
+              <div class="inline-list"><span class="badge badge-issued"><span class="dot"></span>Wi-Fi</span><span class="badge badge-new"><span class="dot"></span>ที่นั่งว่าง 12</span><span class="badge badge-paid"><span class="dot"></span>อาหารว่าง</span></div>
+            </div>
+            <div class="price-box"><span class="price">฿640</span><a class="btn btn-secondary" href="trip-detail.html">เลือกเที่ยวนี้</a></div>
+          </article>
+          <article class="card result-card">
+            <div>
+              <div class="company-line"><span class="logo-box">ST</span><div><strong>สมบัติทัวร์</strong><p class="muted">VIP 24 | ชานชาลา B2 | รีวิว 4.7</p></div></div>
+              <div class="time-route"><strong>20:15<br><span class="helper-text">กรุงเทพฯ</span></strong><span class="track"></span><strong>06:20<br><span class="helper-text">เชียงใหม่</span></strong></div>
+              <div class="inline-list"><span class="badge badge-issued"><span class="dot"></span>USB</span><span class="badge badge-new"><span class="dot"></span>ที่นั่งว่าง 8</span><span class="badge badge-pending"><span class="dot"></span>เหลือน้อย</span></div>
+            </div>
+            <div class="price-box"><span class="price">฿820</span><a class="btn btn-secondary" href="trip-detail.html">เลือกเที่ยวนี้</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="../js/main.js"></script>
+</body>
+</html>

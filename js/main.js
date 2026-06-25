@@ -77,3 +77,18 @@ document.querySelectorAll(".modal-backdrop").forEach((backdrop) => {
     if (event.target === backdrop) closeModal();
   });
 });
+
+document.querySelectorAll("[data-copy]").forEach((button) => {
+  button.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(button.dataset.copy);
+      const oldText = button.textContent;
+      button.textContent = "Copied";
+      window.setTimeout(() => {
+        button.textContent = oldText;
+      }, 1200);
+    } catch {
+      button.textContent = "Copy failed";
+    }
+  });
+});
