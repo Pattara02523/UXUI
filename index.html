@@ -1,29 +1,28 @@
 <!doctype html>
-<!-- เริ่ม -->
 <html lang="th">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BusOnlineTicket Admin Design System</title>
+    <title>BusOnlineTicket Design System</title>
     <style>
       :root {
-        --color-primary: #d1faff;
-        --color-sky: #9bd1e5;
-        --color-steel: #6a8eae;
-        --color-gold: #f5cb5c;
-        --color-clay: #e59f71;
-        --color-ink: #102033;
-        --color-muted: #5d7086;
-        --color-line: #d9e4ea;
-        --color-surface: #ffffff;
-        --color-bg: #f6fafb;
-        --color-success: #2d9f75;
-        --color-warning: #bd7b00;
-        --color-danger: #c94a4a;
-        --shadow-soft: 0 12px 30px rgba(16, 32, 51, 0.08);
+        --primary: #d1faff;
+        --sky: #9bd1e5;
+        --steel: #6a8eae;
+        --gold: #f5cb5c;
+        --clay: #e59f71;
+        --ink: #102033;
+        --muted: #5d7086;
+        --line: #d8e5eb;
+        --bg: #f6fafb;
+        --surface: #ffffff;
+        --success: #2d9f75;
+        --warning: #bd7b00;
+        --danger: #c94a4a;
         --radius: 8px;
         --radius-sm: 6px;
-        --font-main: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+        --shadow: 0 12px 30px rgba(16, 32, 51, 0.08);
+        --font: 'Inter', 'Segoe UI', Tahoma, sans-serif;
       }
 
       * {
@@ -32,9 +31,9 @@
 
       body {
         margin: 0;
-        background: var(--color-bg);
-        color: var(--color-ink);
-        font-family: var(--font-main);
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font);
         line-height: 1.5;
         letter-spacing: 0;
       }
@@ -49,11 +48,11 @@
       .app {
         display: grid;
         min-height: 100vh;
-        grid-template-columns: 248px minmax(0, 1fr);
+        grid-template-columns: 260px minmax(0, 1fr);
       }
 
       .sidebar {
-        background: #102033;
+        background: var(--ink);
         color: #effbfc;
         padding: 24px 18px;
       }
@@ -62,19 +61,19 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        margin-bottom: 28px;
-        font-weight: 800;
+        margin-bottom: 26px;
         font-size: 18px;
+        font-weight: 850;
       }
 
       .brand-mark {
         display: grid;
-        width: 34px;
-        height: 34px;
+        width: 36px;
+        height: 36px;
         place-items: center;
         border-radius: var(--radius-sm);
-        background: var(--color-primary);
-        color: var(--color-ink);
+        background: var(--primary);
+        color: var(--ink);
         font-weight: 900;
       }
 
@@ -84,9 +83,6 @@
       }
 
       .nav a {
-        display: flex;
-        align-items: center;
-        gap: 10px;
         min-height: 40px;
         padding: 9px 10px;
         border-radius: var(--radius-sm);
@@ -95,8 +91,8 @@
         font-size: 14px;
       }
 
-      .nav a.active,
-      .nav a:hover {
+      .nav a:hover,
+      .nav a.active {
         background: rgba(209, 250, 255, 0.14);
         color: #ffffff;
       }
@@ -106,34 +102,42 @@
       }
 
       .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 3;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 16px;
         padding: 18px 28px;
-        border-bottom: 1px solid var(--color-line);
-        background: rgba(255, 255, 255, 0.84);
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.88);
         backdrop-filter: blur(12px);
-        position: sticky;
-        top: 0;
-        z-index: 2;
       }
 
-      .topbar h1 {
-        margin: 0;
-        font-size: 22px;
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 4px;
+        font-size: 24px;
         line-height: 1.2;
       }
 
-      .topbar p {
-        margin: 4px 0 0;
-        color: var(--color-muted);
+      .topbar p,
+      .section-title span,
+      .muted {
+        color: var(--muted);
         font-size: 13px;
       }
 
       .content {
         display: grid;
-        gap: 22px;
+        gap: 24px;
         padding: 28px;
       }
 
@@ -150,21 +154,16 @@
       }
 
       .section-title h2 {
-        margin: 0;
+        margin-bottom: 0;
         font-size: 18px;
       }
 
-      .section-title span {
-        color: var(--color-muted);
-        font-size: 13px;
-      }
-
       .panel {
-        border: 1px solid var(--color-line);
-        border-radius: var(--radius);
-        background: var(--color-surface);
-        box-shadow: var(--shadow-soft);
         overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--surface);
+        box-shadow: var(--shadow);
       }
 
       .panel-body {
@@ -176,20 +175,34 @@
         gap: 14px;
       }
 
-      .grid.colors {
+      .two-col {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .three-col {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .five-col {
+        display: grid;
         grid-template-columns: repeat(5, minmax(120px, 1fr));
+        gap: 14px;
       }
 
       .swatch {
-        min-height: 120px;
-        border: 1px solid var(--color-line);
-        border-radius: var(--radius);
+        min-height: 126px;
         overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
         background: #fff;
       }
 
       .swatch-color {
-        height: 68px;
+        height: 72px;
       }
 
       .swatch-info {
@@ -203,15 +216,14 @@
         margin-bottom: 2px;
       }
 
-      .swatch-info code,
-      .token code {
-        color: var(--color-muted);
+      code,
+      .mono {
+        font-family: 'SFMono-Regular', Consolas, monospace;
         font-size: 12px;
       }
 
-      .type-scale {
-        display: grid;
-        gap: 14px;
+      code {
+        color: var(--muted);
       }
 
       .type-row {
@@ -220,7 +232,7 @@
         gap: 18px;
         align-items: baseline;
         padding-bottom: 14px;
-        border-bottom: 1px solid var(--color-line);
+        border-bottom: 1px solid var(--line);
       }
 
       .type-row:last-child {
@@ -229,48 +241,31 @@
       }
 
       .type-meta {
-        color: var(--color-muted);
+        color: var(--muted);
         font-size: 13px;
       }
 
-      .h-display {
+      .display {
         font-size: 30px;
-        font-weight: 800;
+        font-weight: 850;
         line-height: 1.2;
       }
-
-      .h-page {
+      .page-title {
         font-size: 22px;
         font-weight: 800;
         line-height: 1.2;
       }
-
-      .h-section {
+      .heading {
         font-size: 18px;
-        font-weight: 700;
+        font-weight: 750;
       }
-
-      .body-text {
+      .body-copy {
+        color: var(--muted);
         font-size: 14px;
-        color: var(--color-muted);
       }
-
       .caption {
+        color: var(--muted);
         font-size: 12px;
-        color: var(--color-muted);
-      }
-
-      .component-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      .toolbar {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        align-items: center;
       }
 
       .btn {
@@ -282,36 +277,42 @@
         padding: 8px 13px;
         border: 1px solid transparent;
         border-radius: var(--radius-sm);
+        background: #fff;
+        color: var(--ink);
         cursor: pointer;
-        font-weight: 700;
-        color: var(--color-ink);
-        background: #ffffff;
-        transition: 0.15s ease;
+        font-weight: 750;
         white-space: nowrap;
       }
 
-      .btn:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 8px 18px rgba(16, 32, 51, 0.12);
-      }
-
       .btn-primary {
-        background: var(--color-primary);
         border-color: #afeaf2;
+        background: var(--primary);
       }
 
       .btn-secondary {
-        background: var(--color-steel);
-        color: #ffffff;
+        background: var(--steel);
+        color: #fff;
       }
 
       .btn-warning {
-        background: var(--color-gold);
+        background: var(--gold);
       }
 
       .btn-ghost {
-        border-color: var(--color-line);
-        background: #ffffff;
+        border-color: var(--line);
+        background: #fff;
+      }
+
+      .btn-danger {
+        background: rgba(201, 74, 74, 0.12);
+        color: var(--danger);
+      }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
       }
 
       .field-grid {
@@ -327,7 +328,7 @@
 
       .field label {
         font-size: 13px;
-        font-weight: 700;
+        font-weight: 750;
       }
 
       .input,
@@ -335,11 +336,11 @@
       .textarea {
         width: 100%;
         min-height: 38px;
+        padding: 8px 10px;
         border: 1px solid #c9d9e1;
         border-radius: var(--radius-sm);
-        background: #ffffff;
-        color: var(--color-ink);
-        padding: 8px 10px;
+        background: #fff;
+        color: var(--ink);
         outline: none;
       }
 
@@ -351,14 +352,8 @@
       .input:focus,
       .select:focus,
       .textarea:focus {
-        border-color: var(--color-steel);
+        border-color: var(--steel);
         box-shadow: 0 0 0 3px rgba(155, 209, 229, 0.38);
-      }
-
-      .status-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
       }
 
       .badge {
@@ -381,28 +376,182 @@
       }
 
       .badge-new {
-        background: var(--color-primary);
+        background: var(--primary);
         color: #0f5d6b;
       }
-
       .badge-paid {
         background: rgba(45, 159, 117, 0.12);
-        color: var(--color-success);
+        color: var(--success);
       }
-
       .badge-pending {
         background: rgba(245, 203, 92, 0.22);
-        color: var(--color-warning);
+        color: var(--warning);
       }
-
       .badge-issued {
         background: rgba(106, 142, 174, 0.16);
         color: #3f6388;
       }
-
       .badge-cancelled {
         background: rgba(201, 74, 74, 0.12);
-        color: var(--color-danger);
+        color: var(--danger);
+      }
+
+      .stepper {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .step {
+        min-height: 70px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fff;
+      }
+
+      .step.active {
+        border-color: #afeaf2;
+        background: var(--primary);
+      }
+
+      .step strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 14px;
+      }
+
+      .route-card,
+      .ticket-card,
+      .seat-map,
+      .payment-card,
+      .metric {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fff;
+      }
+
+      .route-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) auto minmax(120px, 0.45fr);
+        gap: 14px;
+        align-items: center;
+        padding: 16px;
+      }
+
+      .route-time {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .time-block strong {
+        display: block;
+        font-size: 20px;
+        line-height: 1.2;
+      }
+
+      .line-track {
+        width: 80px;
+        height: 2px;
+        background: var(--steel);
+        position: relative;
+      }
+
+      .line-track:before,
+      .line-track:after {
+        content: '';
+        position: absolute;
+        top: -4px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--steel);
+      }
+
+      .line-track:before {
+        left: 0;
+      }
+      .line-track:after {
+        right: 0;
+      }
+
+      .seat-map {
+        display: grid;
+        grid-template-columns: repeat(4, 38px);
+        gap: 8px 10px;
+        width: max-content;
+        padding: 14px;
+      }
+
+      .seat {
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        background: #fff;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .seat.available {
+        background: var(--primary);
+        border-color: #afeaf2;
+      }
+      .seat.selected {
+        background: var(--gold);
+        border-color: #d9aa24;
+      }
+      .seat.booked {
+        background: #e7edf1;
+        color: #8292a1;
+      }
+      .seat.aisle {
+        visibility: hidden;
+      }
+
+      .payment-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px;
+      }
+
+      .ticket-card {
+        overflow: hidden;
+      }
+
+      .ticket-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 16px;
+        background: var(--primary);
+      }
+
+      .ticket-body {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .metric {
+        padding: 16px;
+      }
+
+      .metric span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .metric strong {
+        display: block;
+        margin-top: 6px;
+        font-size: 24px;
+        line-height: 1.2;
       }
 
       .filters {
@@ -426,8 +575,8 @@
       th,
       td {
         padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
         text-align: left;
-        border-bottom: 1px solid var(--color-line);
         vertical-align: middle;
       }
 
@@ -442,83 +591,69 @@
         background: #fbfeff;
       }
 
-      .mono {
-        font-family: 'SFMono-Regular', Consolas, monospace;
-        font-size: 13px;
-      }
-
-      .metric-grid {
+      .persona-list {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 14px;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
       }
 
-      .metric {
-        border: 1px solid var(--color-line);
+      .persona-list li {
+        padding: 12px;
+        border: 1px solid var(--line);
         border-radius: var(--radius);
-        background: #ffffff;
-        padding: 16px;
+        background: #fff;
       }
 
-      .metric span {
-        color: var(--color-muted);
-        font-size: 13px;
-      }
-
-      .metric strong {
-        display: block;
-        margin-top: 6px;
-        font-size: 24px;
-        line-height: 1.2;
-      }
-
-      .metric.primary {
-        background: var(--color-primary);
-        border-color: #afeaf2;
-      }
-
-      @media (max-width: 980px) {
+      @media (max-width: 1040px) {
         .app {
           grid-template-columns: 1fr;
         }
-
-        .sidebar {
-          position: static;
-        }
-
         .nav {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
-
-        .grid.colors,
-        .component-grid,
-        .metric-grid,
-        .filters {
+        .five-col,
+        .three-col,
+        .two-col,
+        .filters,
+        .stepper {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .route-card {
+          grid-template-columns: 1fr;
         }
       }
 
       @media (max-width: 640px) {
+        .sidebar,
         .topbar,
         .content {
           padding: 18px;
         }
-
         .topbar {
           align-items: flex-start;
           flex-direction: column;
         }
-
-        .grid.colors,
-        .component-grid,
-        .metric-grid,
+        .five-col,
+        .three-col,
+        .two-col,
         .field-grid,
         .filters,
+        .stepper,
+        .ticket-body,
         .type-row {
           grid-template-columns: 1fr;
         }
-
+        .btn,
         .filters .btn {
+          width: 100%;
+        }
+        .route-time {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .line-track {
           width: 100%;
         }
       }
@@ -531,59 +666,38 @@
           <span class="brand-mark">BT</span>
           <span>BusOnlineTicket</span>
         </div>
-        <nav class="nav" aria-label="Admin navigation">
-          <a class="active" href="#overview">ภาพรวม</a>
-          <a href="#colors">สี</a>
-          <a href="#type">ตัวอักษร</a>
-          <a href="#components">คอมโพเนนต์</a>
-          <a href="#orders">ออเดอร์</a>
-          <a href="#forms">ฟอร์ม</a>
+        <nav class="nav" aria-label="Design system navigation">
+          <a class="active" href="#foundation">Foundation</a>
+          <a href="#users">Users</a>
+          <a href="#booking-flow">Booking Flow</a>
+          <a href="#customer-components">Customer UI</a>
+          <a href="#admin-components">Admin UI</a>
+          <a href="#states">States</a>
+          <a href="#forms">Forms</a>
         </nav>
       </aside>
 
       <main class="main">
         <header class="topbar">
           <div>
-            <h1>Admin Design System</h1>
-            <p>ระบบหลังบ้านสำหรับจัดการการจองตั๋วและติดตามสถานะออเดอร์</p>
+            <h1>BusOnlineTicket Design System</h1>
+            <p>
+              ระบบออกแบบสำหรับเว็บจองตั๋วรถทัวร์
+              ครอบคลุมฝั่งลูกค้าและระบบหลังบ้าน
+            </p>
           </div>
           <button class="btn btn-primary" type="button">
-            + เพิ่มรายการจอง
+            ใช้งานสีหลัก #D1FAFF
           </button>
         </header>
 
         <div class="content">
-          <section class="section" id="overview">
+          <section class="section" id="foundation">
             <div class="section-title">
-              <h2>ภาพรวมหน้าหลังบ้าน</h2>
-              <span>Layout preview</span>
+              <h2>Foundation</h2>
+              <span>สี ตัวอักษร ระยะ และพื้นฐาน UI</span>
             </div>
-            <div class="metric-grid">
-              <div class="metric primary">
-                <span>ออเดอร์ใหม่วันนี้</span>
-                <strong>42</strong>
-              </div>
-              <div class="metric">
-                <span>รอชำระเงิน</span>
-                <strong>18</strong>
-              </div>
-              <div class="metric">
-                <span>ออกตั๋วแล้ว</span>
-                <strong>126</strong>
-              </div>
-              <div class="metric">
-                <span>ยอดขายวันนี้</span>
-                <strong>฿84,250</strong>
-              </div>
-            </div>
-          </section>
-
-          <section class="section" id="colors">
-            <div class="section-title">
-              <h2>Color Palette</h2>
-              <span>สีหลักใช้กับ action, highlight และพื้นที่ active</span>
-            </div>
-            <div class="grid colors">
+            <div class="five-col">
               <div class="swatch">
                 <div class="swatch-color" style="background: #d1faff"></div>
                 <div class="swatch-info">
@@ -615,99 +729,280 @@
                 </div>
               </div>
             </div>
-          </section>
-
-          <section class="section" id="type">
-            <div class="section-title">
-              <h2>Typography</h2>
-              <span>สเกลสำหรับ dashboard และตารางข้อมูล</span>
-            </div>
             <div class="panel">
-              <div class="panel-body type-scale">
+              <div class="panel-body grid">
                 <div class="type-row">
                   <div class="type-meta">Display / 30px</div>
-                  <div class="h-display">รายการจองทั้งหมด</div>
+                  <div class="display">ค้นหาเที่ยวรถที่ต้องการ</div>
                 </div>
                 <div class="type-row">
-                  <div class="type-meta">Page title / 22px</div>
-                  <div class="h-page">จัดการออเดอร์</div>
+                  <div class="type-meta">Page / 22px</div>
+                  <div class="page-title">เลือกเที่ยวรถ</div>
                 </div>
                 <div class="type-row">
                   <div class="type-meta">Section / 18px</div>
-                  <div class="h-section">ข้อมูลผู้โดยสาร</div>
+                  <div class="heading">ข้อมูลผู้โดยสาร</div>
                 </div>
                 <div class="type-row">
                   <div class="type-meta">Body / 14px</div>
-                  <div class="body-text">
-                    ใช้สำหรับรายละเอียดการจอง เส้นทาง ราคา และข้อความในตาราง
+                  <div class="body-copy">
+                    ใช้กับรายละเอียดเส้นทาง เวลาเดินทาง เงื่อนไข
+                    และข้อมูลในตาราง
                   </div>
                 </div>
-                <div class="type-row">
-                  <div class="type-meta">Caption / 12px</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="users">
+            <div class="section-title">
+              <h2>Users & Use Cases</h2>
+              <span>ออกแบบให้คนใช้งานจริงทั้งสองฝั่ง</span>
+            </div>
+            <div class="two-col">
+              <div class="panel">
+                <div class="panel-body grid">
+                  <h3 class="heading">ลูกค้าผู้จองตั๋ว</h3>
+                  <ul class="persona-list">
+                    <li>
+                      <strong>ค้นหาเร็ว:</strong> เลือกต้นทาง ปลายทาง วันที่
+                      จำนวนผู้โดยสาร
+                    </li>
+                    <li>
+                      <strong>ตัดสินใจง่าย:</strong> เห็นเวลา ราคา ที่นั่งว่าง
+                      จุดขึ้นรถ และสิ่งอำนวยความสะดวก
+                    </li>
+                    <li>
+                      <strong>จองมั่นใจ:</strong> มีขั้นตอนชัดเจน
+                      ตรวจสอบข้อมูลก่อนชำระเงิน และได้ตั๋วหลังจอง
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="panel-body grid">
+                  <h3 class="heading">ทีมหลังบ้าน</h3>
+                  <ul class="persona-list">
+                    <li>
+                      <strong>รับออเดอร์:</strong> เห็นรายการใหม่ สถานะชำระเงิน
+                      และข้อมูลลูกค้า
+                    </li>
+                    <li>
+                      <strong>จัดการตั๋ว:</strong> เปลี่ยนสถานะ ออกตั๋ว
+                      ส่งแจ้งเตือน และยกเลิกได้
+                    </li>
+                    <li>
+                      <strong>ติดตามงาน:</strong> แยกออเดอร์ตามสถานะ เส้นทาง
+                      วันเดินทาง และช่องทางชำระเงิน
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="booking-flow">
+            <div class="section-title">
+              <h2>Customer Booking Flow</h2>
+              <span>ขั้นตอนหลักของเว็บจองตั๋วรถทัวร์</span>
+            </div>
+            <div class="stepper">
+              <div class="step active">
+                <strong>1. ค้นหาเที่ยวรถ</strong>
+                <span class="caption"
+                  >ต้นทาง ปลายทาง วันที่ จำนวนผู้โดยสาร</span
+                >
+              </div>
+              <div class="step">
+                <strong>2. เลือกเที่ยวรถและที่นั่ง</strong>
+                <span class="caption">เวลา ราคา ผู้ให้บริการ และ seat map</span>
+              </div>
+              <div class="step">
+                <strong>3. กรอกข้อมูล</strong>
+                <span class="caption">ข้อมูลผู้โดยสาร ผู้ติดต่อ และเอกสาร</span>
+              </div>
+              <div class="step">
+                <strong>4. ชำระเงินและรับตั๋ว</strong>
+                <span class="caption"
+                  >สรุปยอด ช่องทางชำระเงิน และ e-ticket</span
+                >
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="customer-components">
+            <div class="section-title">
+              <h2>Customer UI Components</h2>
+              <span>คอมโพเนนต์สำหรับหน้าลูกค้า</span>
+            </div>
+            <div class="panel">
+              <div class="panel-body grid">
+                <h3 class="heading">Search Panel</h3>
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="from">ต้นทาง</label>
+                    <input class="input" id="from" value="กรุงเทพฯ" />
+                  </div>
+                  <div class="field">
+                    <label for="to">ปลายทาง</label>
+                    <input class="input" id="to" value="เชียงใหม่" />
+                  </div>
+                  <div class="field">
+                    <label for="travel-date">วันที่เดินทาง</label>
+                    <input class="input" id="travel-date" type="date" />
+                  </div>
+                  <div class="field">
+                    <label for="passengers">ผู้โดยสาร</label>
+                    <select class="select" id="passengers">
+                      <option>1 คน</option>
+                      <option>2 คน</option>
+                      <option>3 คน</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="toolbar">
+                  <button class="btn btn-primary" type="button">
+                    ค้นหาเที่ยวรถ
+                  </button>
+                  <button class="btn btn-ghost" type="button">
+                    สลับต้นทางปลายทาง
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid">
+              <div class="route-card">
+                <div class="route-time">
+                  <div class="time-block">
+                    <strong>19:30</strong>
+                    <span class="caption">กรุงเทพฯ</span>
+                  </div>
+                  <div class="line-track" aria-hidden="true"></div>
+                  <div class="time-block">
+                    <strong>05:45</strong>
+                    <span class="caption">เชียงใหม่</span>
+                  </div>
+                </div>
+                <div>
+                  <strong>VIP 32 ที่นั่ง</strong>
                   <div class="caption">
-                    ใช้กับ helper text, timestamp และ metadata
+                    ใช้เวลา 10 ชม. 15 นาที | ที่นั่งว่าง 12
+                  </div>
+                </div>
+                <div>
+                  <strong>฿640</strong>
+                  <button class="btn btn-secondary" type="button">
+                    เลือกเที่ยวนี้
+                  </button>
+                </div>
+              </div>
+
+              <div class="two-col">
+                <div class="panel">
+                  <div class="panel-body grid">
+                    <h3 class="heading">Seat Map</h3>
+                    <div class="seat-map" aria-label="Seat map">
+                      <button class="seat available">1A</button>
+                      <button class="seat available">1B</button>
+                      <span class="seat aisle"></span>
+                      <button class="seat booked">1C</button>
+                      <button class="seat selected">2A</button>
+                      <button class="seat available">2B</button>
+                      <span class="seat aisle"></span>
+                      <button class="seat available">2C</button>
+                      <button class="seat booked">3A</button>
+                      <button class="seat available">3B</button>
+                      <span class="seat aisle"></span>
+                      <button class="seat available">3C</button>
+                    </div>
+                    <div class="toolbar">
+                      <span class="badge badge-new"
+                        ><span class="dot"></span>ว่าง</span
+                      >
+                      <span class="badge badge-pending"
+                        ><span class="dot"></span>เลือกอยู่</span
+                      >
+                      <span class="badge badge-issued"
+                        ><span class="dot"></span>ถูกจองแล้ว</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="panel-body grid">
+                    <h3 class="heading">Payment Methods</h3>
+                    <div class="payment-card">
+                      <div>
+                        <strong>โอนผ่านธนาคาร</strong>
+                        <div class="caption">ตรวจสอบสลิปก่อนออกตั๋ว</div>
+                      </div>
+                      <input type="radio" name="payment" checked />
+                    </div>
+                    <div class="payment-card">
+                      <div>
+                        <strong>บัตรเครดิต / เดบิต</strong>
+                        <div class="caption">ยืนยันอัตโนมัติหลังชำระสำเร็จ</div>
+                      </div>
+                      <input type="radio" name="payment" />
+                    </div>
+                    <div class="payment-card">
+                      <div>
+                        <strong>QR PromptPay</strong>
+                        <div class="caption">เหมาะกับมือถือและชำระเร็ว</div>
+                      </div>
+                      <input type="radio" name="payment" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ticket-card">
+                <div class="ticket-head">
+                  <div>
+                    <strong>E-Ticket BOT-24018</strong>
+                    <div class="caption">กรุณาแสดงตั๋วนี้ก่อนขึ้นรถ</div>
+                  </div>
+                  <span class="badge badge-issued"
+                    ><span class="dot"></span>ออกตั๋วแล้ว</span
+                  >
+                </div>
+                <div class="ticket-body">
+                  <div>
+                    <span class="caption">ผู้โดยสาร</span
+                    ><strong>นภัสสร ใจดี</strong>
+                  </div>
+                  <div>
+                    <span class="caption">เส้นทาง</span
+                    ><strong>กรุงเทพฯ - เชียงใหม่</strong>
+                  </div>
+                  <div>
+                    <span class="caption">ที่นั่ง</span><strong>2A</strong>
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
-          <section class="section" id="components">
+          <section class="section" id="admin-components">
             <div class="section-title">
-              <h2>Components</h2>
-              <span>ปุ่ม สถานะ และส่วนควบคุมหลัก</span>
+              <h2>Admin UI Components</h2>
+              <span>ระบบหลังบ้านรับออเดอร์และอัปเดตสถานะ</span>
             </div>
-            <div class="component-grid">
-              <div class="panel">
-                <div class="panel-body grid">
-                  <h3 class="h-section">Buttons</h3>
-                  <div class="toolbar">
-                    <button class="btn btn-primary" type="button">
-                      ยืนยันออเดอร์
-                    </button>
-                    <button class="btn btn-secondary" type="button">
-                      ดูรายละเอียด
-                    </button>
-                    <button class="btn btn-warning" type="button">
-                      แจ้งชำระเงิน
-                    </button>
-                    <button class="btn btn-ghost" type="button">ยกเลิก</button>
-                  </div>
-                </div>
+            <div class="three-col">
+              <div class="metric">
+                <span>ออเดอร์ใหม่วันนี้</span><strong>42</strong>
               </div>
-              <div class="panel">
-                <div class="panel-body grid">
-                  <h3 class="h-section">Order Status</h3>
-                  <div class="status-row">
-                    <span class="badge badge-new"
-                      ><span class="dot"></span>ออเดอร์ใหม่</span
-                    >
-                    <span class="badge badge-pending"
-                      ><span class="dot"></span>รอชำระเงิน</span
-                    >
-                    <span class="badge badge-paid"
-                      ><span class="dot"></span>ชำระแล้ว</span
-                    >
-                    <span class="badge badge-issued"
-                      ><span class="dot"></span>ออกตั๋วแล้ว</span
-                    >
-                    <span class="badge badge-cancelled"
-                      ><span class="dot"></span>ยกเลิก</span
-                    >
-                  </div>
-                </div>
+              <div class="metric">
+                <span>รอชำระเงิน</span><strong>18</strong>
               </div>
-            </div>
-          </section>
-
-          <section class="section" id="orders">
-            <div class="section-title">
-              <h2>Order Table</h2>
-              <span>ตัวอย่างตารางรับรายการจองจากฝั่งลูกค้า</span>
+              <div class="metric">
+                <span>ออกตั๋วแล้ว</span><strong>126</strong>
+              </div>
             </div>
             <div class="panel">
               <div class="panel-body">
-                <div class="filters" aria-label="Order filters">
+                <div class="filters">
                   <div class="field">
                     <label for="search">ค้นหา</label>
                     <input
@@ -727,8 +1022,8 @@
                     </select>
                   </div>
                   <div class="field">
-                    <label for="date">วันที่เดินทาง</label>
-                    <input class="input" id="date" type="date" />
+                    <label for="admin-date">วันที่เดินทาง</label>
+                    <input class="input" id="admin-date" type="date" />
                   </div>
                   <button class="btn btn-secondary" type="button">
                     กรองข้อมูล
@@ -806,30 +1101,87 @@
             </div>
           </section>
 
-          <section class="section" id="forms">
+          <section class="section" id="states">
             <div class="section-title">
-              <h2>Booking Form</h2>
-              <span>ตัวอย่างฟอร์มแก้ไขสถานะออเดอร์</span>
+              <h2>Status & Feedback</h2>
+              <span>สถานะที่ต้องใช้ทั้งลูกค้าและหลังบ้าน</span>
             </div>
             <div class="panel">
               <div class="panel-body grid">
-                <div class="field-grid">
-                  <div class="field">
-                    <label for="booking-code">เลขการจอง</label>
-                    <input class="input" id="booking-code" value="BOT-24018" />
+                <div class="toolbar">
+                  <span class="badge badge-new"
+                    ><span class="dot"></span>ออเดอร์ใหม่</span
+                  >
+                  <span class="badge badge-pending"
+                    ><span class="dot"></span>รอชำระเงิน</span
+                  >
+                  <span class="badge badge-paid"
+                    ><span class="dot"></span>ชำระแล้ว</span
+                  >
+                  <span class="badge badge-issued"
+                    ><span class="dot"></span>ออกตั๋วแล้ว</span
+                  >
+                  <span class="badge badge-cancelled"
+                    ><span class="dot"></span>ยกเลิก</span
+                  >
+                </div>
+                <div class="toolbar">
+                  <button class="btn btn-primary" type="button">
+                    ยืนยันการจอง
+                  </button>
+                  <button class="btn btn-secondary" type="button">
+                    ออกตั๋ว
+                  </button>
+                  <button class="btn btn-warning" type="button">
+                    แจ้งชำระเงิน
+                  </button>
+                  <button class="btn btn-danger" type="button">
+                    ยกเลิกออเดอร์
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="forms">
+            <div class="section-title">
+              <h2>Forms</h2>
+              <span>ฟอร์มข้อมูลผู้โดยสารและฟอร์มจัดการออเดอร์</span>
+            </div>
+            <div class="two-col">
+              <div class="panel">
+                <div class="panel-body grid">
+                  <h3 class="heading">Passenger Form</h3>
+                  <div class="field-grid">
+                    <div class="field">
+                      <label for="first-name">ชื่อ</label>
+                      <input class="input" id="first-name" value="นภัสสร" />
+                    </div>
+                    <div class="field">
+                      <label for="last-name">นามสกุล</label>
+                      <input class="input" id="last-name" value="ใจดี" />
+                    </div>
+                    <div class="field">
+                      <label for="phone">เบอร์โทร</label>
+                      <input class="input" id="phone" value="081-234-5678" />
+                    </div>
+                    <div class="field">
+                      <label for="email">อีเมล</label>
+                      <input
+                        class="input"
+                        id="email"
+                        value="customer@example.com"
+                      />
+                    </div>
                   </div>
-                  <div class="field">
-                    <label for="passenger">ชื่อลูกค้า</label>
-                    <input class="input" id="passenger" value="นภัสสร ใจดี" />
-                  </div>
-                  <div class="field">
-                    <label for="route">เส้นทาง</label>
-                    <select class="select" id="route">
-                      <option>กรุงเทพฯ - เชียงใหม่</option>
-                      <option>กรุงเทพฯ - ภูเก็ต</option>
-                      <option>ขอนแก่น - กรุงเทพฯ</option>
-                    </select>
-                  </div>
+                  <button class="btn btn-primary" type="button">
+                    ไปขั้นตอนชำระเงิน
+                  </button>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="panel-body grid">
+                  <h3 class="heading">Admin Order Form</h3>
                   <div class="field">
                     <label for="order-status">สถานะออเดอร์</label>
                     <select class="select" id="order-status">
@@ -840,20 +1192,20 @@
                       <option>ยกเลิก</option>
                     </select>
                   </div>
-                </div>
-                <div class="field">
-                  <label for="note">บันทึกภายใน</label>
-                  <textarea class="textarea" id="note">
+                  <div class="field">
+                    <label for="note">บันทึกภายใน</label>
+                    <textarea class="textarea" id="note">
 ลูกค้าขอที่นั่งริมหน้าต่าง หากมีที่ว่างให้จัดให้ก่อนออกตั๋ว</textarea
-                  >
-                </div>
-                <div class="toolbar">
-                  <button class="btn btn-primary" type="button">
-                    บันทึกสถานะ
-                  </button>
-                  <button class="btn btn-ghost" type="button">
-                    ส่งแจ้งเตือนลูกค้า
-                  </button>
+                    >
+                  </div>
+                  <div class="toolbar">
+                    <button class="btn btn-primary" type="button">
+                      บันทึกสถานะ
+                    </button>
+                    <button class="btn btn-ghost" type="button">
+                      ส่งแจ้งเตือนลูกค้า
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
