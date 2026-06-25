@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BusOnlineTicket | จองตั๋วรถทัวร์ทั่วไทย</title>
+  <meta name="description" content="ค้นหา เปรียบเทียบ และจองตั๋วรถทัวร์ภายในประเทศไทย พร้อมชำระเงินและรับตั๋วออนไลน์" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+Thai:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Skip Link (Accessibility) -->
+  <a class="skip-link" href="#main">ข้ามไปยังเนื้อหา</a>
+
+  <!-- ==================== HEADER / NAVBAR ==================== -->
+  <header class="site-header">
+    <nav class="navbar container" aria-label="เมนูหลัก">
+      <a class="brand" href="index.html" aria-label="BusOnlineTicket Home">
+        <span class="brand-mark">BT</span>
+        <span>BusOnlineTicket</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="เปิดเมนู" aria-controls="primary-menu" aria-expanded="false">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+
+      <div class="nav-links" id="primary-menu">
+        <a class="nav-link active" href="index.html">หน้าแรก</a>
+        <a class="nav-link" href="pages/search-results.html">ค้นหาเที่ยวรถ</a>
+        <a class="nav-link" href="pages/booking-history.html">ประวัติการจอง</a>
+        <a class="nav-link" href="pages/support.html">ช่วยเหลือ</a>
+      </div>
+
+      <div class="nav-actions" aria-label="บัญชีผู้ใช้">
+        <a class="btn btn-ghost" href="pages/login.html">เข้าสู่ระบบ</a>
+        <a class="btn btn-primary" href="pages/register.html">สมัครสมาชิก</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== MAIN ==================== -->
+  <main id="main">
+
+    <!-- -------------------- HERO + SEARCH FORM -------------------- -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <!-- Hero Copy -->
+        <div class="hero-copy">
+          <span class="section-kicker">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+            จองง่าย ปลอดภัย พร้อมออกตั๋วออนไลน์
+          </span>
+          <h1 id="hero-title">จองตั๋วรถทัวร์ทั่วไทยในไม่กี่ขั้นตอน</h1>
+          <p>
+            ค้นหาเที่ยวรถแบบ Airline เปรียบเทียบเวลา ราคา บริษัทเดินรถ
+            ที่นั่งว่าง และชานชาลาก่อนตัดสินใจจอง
+          </p>
+          <div class="trust-row" aria-label="จุดเด่นบริการ">
+            <span class="badge badge-paid"><span class="dot"></span>ชำระเงินออนไลน์</span>
+            <span class="badge badge-issued"><span class="dot"></span>รับ E-Ticket</span>
+            <span class="badge badge-new"><span class="dot"></span>จองแบบ Guest ได้</span>
+          </div>
+        </div>
+
+        <!-- Search Booking Card (Glassmorphism) -->
+        <article class="glass-card booking-card" aria-labelledby="search-title">
+          <h2 class="section-title" id="search-title">ค้นหาเที่ยวรถ</h2>
+          <p class="muted">เลือกเส้นทาง วันเดินทาง และจำนวนผู้โดยสาร</p>
+
+          <!-- Trip Type Tabs -->
+          <div class="booking-tabs" role="tablist" aria-label="ประเภทการเดินทาง">
+            <button class="tab-btn active" type="button" role="tab" aria-selected="true" data-trip-type="oneway">เที่ยวเดียว</button>
+            <button class="tab-btn" type="button" role="tab" aria-selected="false" data-trip-type="roundtrip">ไป-กลับ</button>
+          </div>
+
+          <!-- Search Form -->
+          <form class="search-form" action="pages/search-results.html" method="get" novalidate>
+            <!-- Route Switch (Origin / Destination) -->
+            <div class="route-switch">
+              <div class="field">
+                <label for="origin">ต้นทาง</label>
+                <select class="select" id="origin" name="origin" required>
+                  <option value="">เลือกต้นทาง</option>
+                  <option selected>กรุงเทพฯ</option>
+                  <option>เชียงใหม่</option>
+                  <option>ขอนแก่น</option>
+                  <option>ภูเก็ต</option>
+                  <option>หาดใหญ่</option>
+                  <option>นครราชสีมา</option>
+                  <option>อุดรธานี</option>
+                  <option>พัทยา</option>
+                </select>
+              </div>
+
+              <button class="btn btn-ghost icon-btn" type="button" data-swap-route aria-label="สลับต้นทางและปลายทาง">
+                <i class="fa-solid fa-right-left" aria-hidden="true"></i>
+              </button>
+
+              <div class="field">
+                <label for="destination">ปลายทาง</label>
+                <select class="select" id="destination" name="destination" required>
+                  <option value="">เลือกปลายทาง</option>
+                  <option>กรุงเทพฯ</option>
+                  <option selected>เชียงใหม่</option>
+                  <option>ขอนแก่น</option>
+                  <option>ภูเก็ต</option>
+                  <option>หาดใหญ่</option>
+                  <option>นครราชสีมา</option>
+                  <option>อุดรธานี</option>
+                  <option>พัทยา</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Fields Grid: Dates, Passengers, Bus Class -->
+            <div class="field-grid">
+              <div class="field">
+                <label for="depart-date">วันที่เดินทาง</label>
+                <input class="input" id="depart-date" name="departDate" type="date" required />
+              </div>
+
+              <div class="field" data-return-field>
+                <label for="return-date">วันที่กลับ</label>
+                <input class="input" id="return-date" name="returnDate" type="date" disabled />
+                <span class="helper-text">เปิดใช้งานเมื่อเลือกไป-กลับ</span>
+              </div>
+
+              <div class="field">
+                <label for="passengers">จำนวนผู้โดยสาร</label>
+                <select class="select" id="passengers" name="passengers" required>
+                  <option>1 คน</option>
+                  <option>2 คน</option>
+                  <option>3 คน</option>
+                  <option>4 คน</option>
+                  <option>5 คน</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="bus-class">ประเภทรถ</label>
+                <select class="select" id="bus-class" name="busClass">
+                  <option>ทุกประเภท</option>
+                  <option>VIP 24</option>
+                  <option>VIP 32</option>
+                  <option>ปรับอากาศ</option>
+                  <option>รถมินิบัส</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <span class="helper-text">
+                <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                สามารถยกเลิกได้ตามเงื่อนไขของบริษัทเดินรถ
+              </span>
+              <button class="btn btn-secondary" type="submit">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                ค้นหาเที่ยวรถ
+              </button>
+            </div>
+          </form>
+        </article>
+      </div>
+    </section>
+
+    <!-- -------------------- BOOKING FLOW -------------------- -->
+    <section class="section" aria-labelledby="flow-title">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-kicker">
+              <i class="fa-solid fa-route" aria-hidden="true"></i> User Flow
+            </span>
+            <h2 class="section-title" id="flow-title">ขั้นตอนการจองที่ชัดเจน</h2>
+          </div>
+          <button class="btn btn-ghost" type="button" data-open-modal="flow-modal">ดูรายละเอียด</button>
+        </div>
+
+        <div class="timeline" aria-label="ขั้นตอนการจอง">
+          <article class="timeline-step active">
+            <strong>1. ค้นหาเที่ยวรถ</strong>
+            <span class="helper-text">ต้นทาง ปลายทาง วันที่ และจำนวนผู้โดยสาร</span>
+          </article>
+          <article class="timeline-step">
+            <strong>2. เลือกเที่ยวรถ</strong>
+            <span class="helper-text">เปรียบเทียบราคา เวลา รีวิว และที่นั่งว่าง</span>
+          </article>
+          <article class="timeline-step">
+            <strong>3. ชำระเงิน</strong>
+            <span class="helper-text">QR PromptPay หรือโอนบัญชี 4400533990</span>
+          </article>
+          <article class="timeline-step">
+            <strong>4. รับตั๋ว</strong>
+            <span class="helper-text">ดาวน์โหลดตั๋ว ใบเสร็จ และดูประวัติการจอง</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------- SERVICE BENEFITS -------------------- -->
+    <section class="section" aria-labelledby="benefits-title">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-kicker">
+              <i class="fa-solid fa-star" aria-hidden="true"></i> Service
+            </span>
+            <h2 class="section-title" id="benefits-title">ออกแบบเพื่อคนจองตั๋วจริง</h2>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card">
+            <div class="card-icon">
+              <i class="fa-solid fa-user-check" aria-hidden="true"></i>
+            </div>
+            <h3>Guest Booking</h3>
+            <p>ลูกค้าจองได้ทันที และสมัครสมาชิกภายหลังเพื่อเก็บประวัติการจอง</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">
+              <i class="fa-solid fa-chair" aria-hidden="true"></i>
+            </div>
+            <h3>เลือกที่นั่ง</h3>
+            <p>รองรับ Available, Selected, Occupied, VIP, Female Seat และ Wheelchair</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">
+              <i class="fa-solid fa-ticket" aria-hidden="true"></i>
+            </div>
+            <h3>เอกสารครบ</h3>
+            <p>ดาวน์โหลดตั๋ว ใบเสร็จ พิมพ์ Boarding Pass และจองซ้ำเส้นทางโปรด</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+            </div>
+            <h3>ชำระเงินปลอดภัย</h3>
+            <p>QR PromptPay และโอนบัญชีธนาคาร ตรวจสอบสลิปอัตโนมัติ พร้อมอีเมลยืนยัน</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">
+              <i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>
+            </div>
+            <h3>Responsive ทุกอุปกรณ์</h3>
+            <p>ออกแบบให้ใช้งานได้ดีทั้ง Desktop, Tablet และ Mobile โดยไม่ต้องติดตั้งแอป</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">
+              <i class="fa-solid fa-headset" aria-hidden="true"></i>
+            </div>
+            <h3>ฝ่ายบริการลูกค้า</h3>
+            <p>ติดต่อสอบถาม ยกเลิก เปลี่ยนเที่ยว และขอความช่วยเหลือตลอด 24 ชม.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------- POPULAR ROUTES -------------------- -->
+    <section class="section" aria-labelledby="routes-title">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-kicker">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Popular Routes
+            </span>
+            <h2 class="section-title" id="routes-title">เส้นทางยอดนิยม</h2>
+          </div>
+          <a class="btn btn-primary" href="pages/search-results.html">ดูเที่ยวรถทั้งหมด</a>
+        </div>
+
+        <div class="route-grid">
+          <article class="card route-card">
+            <div class="route-meta">
+              <strong>กรุงเทพฯ - เชียงใหม่</strong>
+              <span class="badge badge-paid"><span class="dot"></span>ขายดี</span>
+            </div>
+            <div class="route-line">10 ชม. 15 นาที</div>
+            <a class="btn btn-ghost" href="pages/search-results.html">ค้นหาเส้นทางนี้</a>
+          </article>
+          <article class="card route-card">
+            <div class="route-meta">
+              <strong>กรุงเทพฯ - ภูเก็ต</strong>
+              <span class="badge badge-new"><span class="dot"></span>มีที่นั่ง</span>
+            </div>
+            <div class="route-line">12 ชม. 30 นาที</div>
+            <a class="btn btn-ghost" href="pages/search-results.html">ค้นหาเส้นทางนี้</a>
+          </article>
+          <article class="card route-card">
+            <div class="route-meta">
+              <strong>ขอนแก่น - กรุงเทพฯ</strong>
+              <span class="badge badge-pending"><span class="dot"></span>ราคาเริ่มต้น</span>
+            </div>
+            <div class="route-line">6 ชม. 45 นาที</div>
+            <a class="btn btn-ghost" href="pages/search-results.html">ค้นหาเส้นทางนี้</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------- UI STATES SHOWCASE -------------------- -->
+    <section class="section" aria-labelledby="states-title">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-kicker">
+              <i class="fa-solid fa-layer-group" aria-hidden="true"></i> Component States
+            </span>
+            <h2 class="section-title" id="states-title">สถานะสำคัญของหน้าแรก</h2>
+          </div>
+        </div>
+
+        <div class="state-grid">
+          <!-- Loading State -->
+          <article class="state-box is-loading" aria-label="Loading state">
+            <strong>Loading State</strong>
+            <div class="skeleton" style="margin-top:14px"></div>
+            <div class="skeleton" style="width:74%"></div>
+            <div class="skeleton" style="width:48%"></div>
+          </article>
+          <!-- Empty State -->
+          <article class="state-box" aria-label="Empty state">
+            <strong>Empty State</strong>
+            <p class="muted">ยังไม่มีเส้นทางโปรด ลองค้นหาและกดบันทึกเส้นทางที่ใช้บ่อย</p>
+            <button class="btn btn-primary" type="button">ค้นหาเส้นทาง</button>
+          </article>
+          <!-- Feedback State -->
+          <article class="state-box" aria-label="Error and success state">
+            <strong>Feedback State</strong>
+            <p>
+              <span class="badge badge-paid"><span class="dot"></span>บันทึกสำเร็จ</span>
+            </p>
+            <p>
+              <span class="badge badge-cancelled"><span class="dot"></span>กรุณาเลือกวันที่เดินทาง</span>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>BusOnlineTicket</strong>
+        <p class="muted">ระบบจำหน่ายตั๋วรถทัวร์ภายในประเทศไทย</p>
+      </div>
+      <div class="trust-row">
+        <span class="badge badge-issued"><span class="dot"></span>Secure Booking</span>
+        <span class="badge badge-new"><span class="dot"></span>Responsive UI</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODAL: Booking Flow Detail ==================== -->
+  <div class="modal-backdrop" id="flow-modal" role="dialog" aria-modal="true" aria-labelledby="flow-modal-title" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="flow-modal-title">ภาพรวมขั้นตอนการจอง</h2>
+        <button class="btn btn-ghost icon-btn" type="button" data-close-modal aria-label="ปิดหน้าต่าง">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="muted">
+          หน้าแรกเริ่มจากการค้นหาเที่ยวรถ จากนั้นผู้ใช้ไปยังผลการค้นหา
+          รายละเอียดเที่ยวรถ เลือกที่นั่ง กรอกข้อมูล ชำระเงิน อัปโหลดสลิป
+          ยืนยัน และรับตั๋ว
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" type="button" data-close-modal>ปิด</button>
+        <a class="btn btn-secondary" href="pages/search-results.html">เริ่มค้นหา</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
